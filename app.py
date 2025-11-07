@@ -12,8 +12,8 @@ CORS(app)  # Enable CORS for mobile access
 
 # Load model once at startup
 print("Loading BLIP model...")
-processor = BlipProcessor.from_pretrained("Salesforce/blip-image-captioning-large")
-model = BlipForConditionalGeneration.from_pretrained("Salesforce/blip-image-captioning-large")
+processor = BlipProcessor.from_pretrained("Salesforce/blip-image-captioning-base")
+model = BlipForConditionalGeneration.from_pretrained("Salesforce/blip-image-captioning-base")
 print("Model loaded successfully!")
 
 @app.route('/caption', methods=['POST'])
@@ -70,3 +70,4 @@ def health():
 if __name__ == '__main__':
     port = int(os.environ.get("PORT", 5000))
     app.run(host='0.0.0.0', port=port, debug=False)
+

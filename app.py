@@ -5,6 +5,7 @@ from deep_translator import GoogleTranslator
 from PIL import Image
 import base64
 import io
+import os
 
 app = Flask(__name__)
 CORS(app)  # Enable CORS for mobile access
@@ -67,5 +68,5 @@ def health():
     return jsonify({'status': 'ok', 'message': 'Backend is running'})
 
 if __name__ == '__main__':
-    # Run on all interfaces so mobile can access
-    app.run(host='0.0.0.0', port=5000, debug=True)
+    port = int(os.environ.get("PORT", 5000))
+    app.run(host='0.0.0.0', port=port, debug=False)
